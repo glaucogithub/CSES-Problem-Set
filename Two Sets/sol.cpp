@@ -48,6 +48,7 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 
 
 void display(vector<int64_t> &A) {
+	cout << (int)A.size() << '\n';
 	for (auto a : A) {
 		cout << a << " ";
 	}
@@ -58,14 +59,14 @@ void run_case() {
 	int64_t n, sum;
 	cin >> n;
 	sum = n * (n + 1) / 2;
-	vector<int64_t> A, B;
 	if (sum % 2 == 1) {
 		cout << "NO" << '\n';
 		return;
 	} else {
-		cout << "YES" << endl;
+		cout << "YES" << '\n';
+		vector<int64_t> A, B;
 		int64_t ans = sum / 2;
-		for (int64_t i = n; i >= 1; i--) {
+		for (int i = n; i >= 1; i--) {
 			if (i <= ans) {
 				A.push_back(i);
 				ans -= i;
@@ -73,15 +74,9 @@ void run_case() {
 				B.push_back(i);
 			}
 		}
+		display(A);
+		display(B);
 	}
-	sort(A.begin(), A.end());
-	sort(B.begin(), B.end());
-	//Mostro um conjunto...
-	cout << (int)A.size() << '\n';
-	display(A);
-	//e depois mostro o outro
-	cout << (int)B.size() << '\n';
-	display(B);
 }
 
 int main() {
@@ -97,3 +92,4 @@ int main() {
 		run_case();
 	}
 }
+
